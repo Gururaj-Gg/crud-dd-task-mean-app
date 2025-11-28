@@ -158,11 +158,17 @@ nginx:
 ## 🔧 CI/CD Configuration Steps
 
 Step 1 — Create Docker Hub Access Token
+
 Login to Docker Hub → Account Settings
+
 Go to Security → Access Tokens
+
 Click New Access Token
+
 Name: github-actions
+
 Permission: Read/Write
+
 Copy the generated token
 
 Step 2 — Add GitHub Secrets
@@ -180,8 +186,8 @@ GitHub → Repository → Settings → Secrets → Actions → New repository se
 
 
 Step 3 — Create GitHub Actions Workflow
-Create file:
-.github/workflows/deploy.yml
+
+Create file:.github/workflows/deploy.yml
 
 name: CI/CD Deploy to EC2
 
@@ -228,16 +234,24 @@ jobs:
           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
           port: ${{ secrets.VM_SSH_PORT }}
           script: |
-            cd ~/crud-dd-task-mean-app
+           
+  cd ~/crud-dd-task-mean-app
+         
             git pull
+            
             docker compose pull
+            
             docker compose up -d
+            
             docker image prune -f
             
 ## 1. Developer pushes code to GitHub
 git add .
+
 git commit -m "update"
+
 git push origin main
+
 ## 2. GitHub Actions is triggered
 
 <img width="1849" height="1012" alt="Screenshot 2025-11-28 145643" src="https://github.com/user-attachments/assets/7ecb7822-7da1-48eb-b581-c762c01cf846" />
@@ -247,8 +261,11 @@ git push origin main
 cd crud-dd-task-mean-app
 
 docker build -t gururajg9/mean-backend:latest ./backend
+
 docker push gururajg9/mean-backend:latest
+
 docker build -t gururajg9/mean-frontend:latest ./frontend
+
 docker push gururajg9/mean-frontend:latest
 
 ## 🧾 Result After pushing, open Docker Hub and check
