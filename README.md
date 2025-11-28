@@ -1,4 +1,4 @@
-# MEAN Stack Docker Deployment Project
+# FULL STACK MEAN Docker Deployment 
 
 **Gururaj G**
 
