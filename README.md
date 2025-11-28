@@ -55,8 +55,10 @@ Navigate to `http://localhost:8081/`
 crud-dd-task-mean-app/
 ├── frontend/
 │ └── Dockerfile
+
 ├── backend/
 │ └── Dockerfile
+
 ├── docker-compose.yml
 └── README.md
 
@@ -70,14 +72,14 @@ crud-dd-task-mean-app/
                        ▼
                AWS EC2 Ubuntu Server
         ┌──────────────┴────────────────┐
-        │        Docker Compose          │
+        │        Docker Compose         │
         │  ┌────────┐   ┌──────────┐    │
 Browser ─► │ Nginx  │──►│ Frontend │    │
         │  └────────┘   └──────────┘    │
-        │         │           │          │
-        │         ▼           ▼          │
-        │     Backend API  MongoDB       │
-        └────────────────────────────────┘
+        │         │           │         │
+        │         ▼           ▼         │
+        │     Backend API  MongoDB      │
+        └───────────────────────────────┘
 
 
 ## Screenshots
