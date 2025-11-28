@@ -6,11 +6,10 @@ import { Tutorial } from '../models/tutorial.model';
 const baseUrl = 'http://localhost:8080/api/tutorials';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TutorialService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Tutorial[]> {
     return this.http.get<Tutorial[]>(baseUrl);
