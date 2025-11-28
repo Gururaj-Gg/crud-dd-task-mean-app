@@ -53,11 +53,11 @@ Navigate to `http://localhost:8081/`
 ## 📂 Project Structure
 
 crud-dd-task-mean-app/
-├── frontend/ # Angular UI
+├── frontend/
 │ └── Dockerfile
-├── backend/ # Node/Express API
+├── backend/
 │ └── Dockerfile
-├── docker-compose.yml # Multi-container deployment setup
+├── docker-compose.yml
 └── README.md
 
 ## 🖥 Architecture Diagram    
@@ -78,6 +78,7 @@ Browser ─► │ Nginx  │──►│ Frontend │    │
         │         ▼           ▼          │
         │     Backend API  MongoDB       │
         └────────────────────────────────┘
+
 
 ## Screenshots
 
@@ -143,13 +144,19 @@ server {
 ## Nginx Docker Compose Setup
 
 nginx:
+  
   image: nginx:alpine
+  
   container_name: mean-nginx
+  
   restart: always
+ 
   ports:
     - "80:80"
+  
   volumes:
     - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  
   depends_on:
     - frontend
     - backend
@@ -223,16 +230,23 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mean-frontend:latest
 
   deploy:
+  
     needs: build-and-push
     runs-on: ubuntu-latest
+    
     steps:
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
+          
           host: ${{ secrets.VM_SSH_HOST }}
+          
           username: ${{ secrets.VM_SSH_USER }}
+         
           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+          
           port: ${{ secrets.VM_SSH_PORT }}
+         
           script: |
            
   cd ~/crud-dd-task-mean-app
